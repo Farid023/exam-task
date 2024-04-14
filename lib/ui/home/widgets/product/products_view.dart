@@ -43,6 +43,12 @@ class ProductsView extends StatelessWidget {
                   category: product.category,
 
                   deleteItem: () {
+
+                    
+                    //bu metod ne qeder yoxlasam da işlemedi 
+
+
+                    
                     test(index);
                     print("test");
                     print("asdaasd");
