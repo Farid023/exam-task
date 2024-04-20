@@ -10,13 +10,11 @@ class ProductsCubit extends Cubit<ProductsState> {
   ProductsCubit() : super(ProductsInitial());
 
    List<Product> _productsList = [];
- // int? deletedProductIndex;
 
   void getProducts() async {
     try {
       emit(ProductsLoading());
-      final result = await FakeStoreService.getProducts();
-      _productsList = result;
+      _productsList = await FakeStoreService.getProducts();
       emit(ProductsSuccess(data: _productsList));
     } catch (e) {
       emit(ProductsFailure(
@@ -24,10 +22,8 @@ class ProductsCubit extends Cubit<ProductsState> {
     }
   }
 
-  void deleteProduct(int index) {
-    _productsList.removeAt(index);
-    print(_productsList[index]);
-
+  void deleteProduct(int? id) {
+    _productsList.removeWhere((product) => product.id == id);
     emit(ProductsSuccess(data: _productsList));
   }
 }

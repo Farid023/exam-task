@@ -1,9 +1,11 @@
 import 'package:e_commerce_task/cubits/home/products/products_cubit.dart';
 import 'package:e_commerce_task/ui/home/home_screen.dart';
+import 'package:e_commerce_task/utils/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+
   runApp(const MyApp());
 }
 

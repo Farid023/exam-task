@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +10,7 @@ class ProductsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //  final cubit = BlocProvider.of<ProductsCubit>(context);
+    final cubit = BlocProvider.of<ProductsCubit>(context);
     return BlocBuilder<ProductsCubit, ProductsState>(
       builder: (context, state) {
         if (state is ProductsInitial || state is ProductsLoading) {
@@ -20,7 +18,6 @@ class ProductsView extends StatelessWidget {
         } else if (state is ProductsFailure) {
           return Text(state.errorMessage);
         } else if (state is ProductsSuccess) {
-          final cubit = BlocProvider.of<ProductsCubit>(context);
           final List<Product> productList = state.data;
           return GridView.builder(
               shrinkWrap: true,
@@ -41,14 +38,8 @@ class ProductsView extends StatelessWidget {
                   price: product.price,
                   rating: product.rating?.rate,
                   category: product.category,
-
                   deleteItem: () {
-                    test(index);
-                    print("test");
-                    print("asdaasd");
-                    cubit.deleteProduct(index);
-                    productList.removeAt(index);
-
+                    cubit.deleteProduct(product.id);
                   },
                 );
               });
@@ -57,9 +48,5 @@ class ProductsView extends StatelessWidget {
         }
       },
     );
-  }
-
-  void test(index) {
-    log("sssssssssssssss");
   }
 }
