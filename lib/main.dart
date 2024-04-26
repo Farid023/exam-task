@@ -1,11 +1,12 @@
-import 'package:e_commerce_task/cubits/home/products/products_cubit.dart';
-import 'package:e_commerce_task/ui/home/home_screen.dart';
-import 'package:e_commerce_task/utils/test.dart';
+import 'package:e_commerce_task/di/locator.dart';
+import 'package:e_commerce_task/presentation/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+import 'presentation/cubits/home/products/products_cubit.dart';
 
+void main() {
+  setupLocator();
   runApp(const MyApp());
 }
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: BlocProvider(
-        create: (context) => ProductsCubit()..getProducts(),
+        create: (context) => ProductsCubit(locator())..getProducts(),
         child: const HomeScreen(),
       ),
     );

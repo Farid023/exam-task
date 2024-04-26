@@ -1,4 +1,4 @@
-import 'package:e_commerce_task/ui/home/widgets/product/products_view.dart';
+import 'package:e_commerce_task/presentation/ui/home/widgets/product/products_view.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/app_bar_cart_button.dart';
@@ -6,14 +6,15 @@ import 'widgets/app_bar_cart_button.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
- static int? deletedItemsCount = 0;
+  static int? deletedItemsCount = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions:  [
-          AppBarCartButton(deletedItemsCount: deletedItemsCount.toString(),),
+        title: const Text("Products"),
+        actions: const [
+          AppBarCartButton(),
         ],
       ),
       body: const ProductsView(),

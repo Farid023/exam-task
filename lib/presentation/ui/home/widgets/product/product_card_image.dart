@@ -10,7 +10,7 @@ class ProductCardImage extends StatelessWidget {
   });
 
   final String? image;
-  final  Function() deleteItem;
+  final void Function()? deleteItem;
 
   @override
   Widget build(BuildContext context) {

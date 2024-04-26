@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ProductCardDeleteBtn extends StatelessWidget {
   const ProductCardDeleteBtn({super.key, required this.deleteItem});
 
-  final Function() deleteItem;
+  final void Function()? deleteItem;
 
   @override
   Widget build(BuildContext context) {
